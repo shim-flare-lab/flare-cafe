@@ -1,0 +1,28 @@
+# production profile
+
+spring:
+  config:
+    import: application-core.yml
+    
+  datasource:
+    hikari:
+      username:
+      password:
+      connection-timeout: 1000
+      pool-name: flare-cafe-db-connection-pool
+      jdbc-url: # todo - production url
+      
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    root: error

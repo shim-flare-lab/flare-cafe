@@ -1,0 +1,13 @@
+application:
+  slogan: Brewing APIs like coffee. @lumiflare, @bright-flare
+
+spring:
+  application:
+    name: flare-cafe
+  web:
+    resources:
+      add-mappings: false
+  messages:
+    encoding: utf-8
+  jpa:
+    open-in-view: false

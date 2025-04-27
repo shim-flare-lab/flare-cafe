@@ -1,9 +1,8 @@
-package com.flare.cafe.flarecafe;
+package com.cafe.flare.flarecafe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class FlareCafeApplicationTests {
 
   @Test

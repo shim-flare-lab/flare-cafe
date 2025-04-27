@@ -1,6 +1,0 @@
-application:
-  slogan: Brewing APIs like coffee. @lumiflare, @bright-flare
-
-spring:
-  application:
-    name: flare-cafe

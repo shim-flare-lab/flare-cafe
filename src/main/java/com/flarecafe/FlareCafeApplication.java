@@ -1,4 +1,4 @@
-package com.flare.cafe.flarecafe;
+package com.flarecafe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

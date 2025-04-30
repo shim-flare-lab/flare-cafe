@@ -3,5 +3,10 @@
 root = true
 
 [*]
-indent_style = space
-indent_size = 2
+charset = utf-8             # Character encoding
+end_of_line = lf            # Use \n as the line ending for all files (consistent across Windows and macOS)
+indent_style = space        # Indentation style
+indent_size = 2             # Number of spaces per indentation level
+max_line_length = 150       # Maximum line length
+tab_width = 2               # Visual width of a tab character
+ij_smart_tabs = false       # Use consistent tab-based indentation (no mixed tab/space alignment)

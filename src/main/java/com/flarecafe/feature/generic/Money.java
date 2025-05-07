@@ -1,16 +1,20 @@
 package com.flarecafe.feature.generic;
 
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
+@Embeddable
+@NoArgsConstructor
 public class Money {
   
   public static final Money ZERO = Money.won(0);
 
-  private final BigDecimal amount;
+  private BigDecimal amount;
 
   Money(BigDecimal amount) {
     this.amount = amount;

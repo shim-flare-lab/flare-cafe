@@ -1,26 +1,30 @@
 package com.flarecafe.feature.generic;
 
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
+@Embeddable
+@NoArgsConstructor
 public class Money {
   
-  public static final Money ZERO = Money.won(0);
+  public static final Money ZERO = Money.of(0);
 
-  private final BigDecimal amount;
-
+  private BigDecimal amount;
+  
   Money(BigDecimal amount) {
     this.amount = amount;
   }
 
-  public static Money won(long amount) {
+  public static Money of(long amount) {
     return new Money(BigDecimal.valueOf(amount));
   }
 
-  public static Money won(double amount) {
+  public static Money of(double amount) {
     return new Money(BigDecimal.valueOf(amount));
   }
 
@@ -32,8 +36,10 @@ public class Money {
     return new Money(this.amount.subtract(amount.amount));
   }
 
-  public Money times(double percent) {
-    return new Money(this.amount.multiply(BigDecimal.valueOf(percent)));
+  public Money applyPercentage(int percent) {
+    return new Money(this.amount
+      .multiply(BigDecimal.valueOf(percent))
+      .divide(BigDecimal.valueOf(100)));
   }
 
   public Money divide(double divisor) {
@@ -57,7 +63,7 @@ public class Money {
   }
 
   public String toString() {
-    return amount.toString() + "원";
+    return amount.toString();
   }
   
 

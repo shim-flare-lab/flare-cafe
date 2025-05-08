@@ -26,23 +26,33 @@ public abstract class BaseEntity {
   private LocalDateTime createdAt;
 
   @Column(nullable = false, updatable = false, name = "created_user_id")
-  protected String createdUserId;
+  private String createdUserId;
   
   @Column(nullable = false , name ="modified_date_time")
   @LastModifiedDate
   private LocalDateTime modifiedAt;
 
   @Column(nullable = false, name = "modified_user_id")
-  protected String modifiedUserId;
+  private String modifiedUserId;
   
+  protected void updateCreatedUser(String userId) {
+    this.createdUserId = userId;
+    this.modifiedUserId = userId;
+  }
+  
+  protected void updateModifiedUser(String userId) {
+    this.modifiedUserId = userId;
+  }
+
   @Override
   public String toString() {
     return "BaseEntity{" +
-      "createdAt=" + createdAt +
-      ", createdUserId='" + createdUserId + '\'' +
-      ", modifiedAt=" + modifiedAt +
-      ", modifiedUserId='" + modifiedUserId + '\'' +
-      '}';
+            "uniqueId='" + uniqueId + '\'' +
+            ", createdAt=" + createdAt +
+            ", createdUserId='" + createdUserId + '\'' +
+            ", modifiedAt=" + modifiedAt +
+            ", modifiedUserId='" + modifiedUserId + '\'' +
+            '}';
   }
   
 }

@@ -2,13 +2,15 @@ package com.flarecafe.feature.promotion.domain;
 
 import com.flarecafe.config.DataSourceConfig;
 import com.flarecafe.config.JpaConfig;
+import com.flarecafe.feature.generic.Status;
 import com.flarecafe.feature.promotion.infra.PromotionJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 @Import({DataSourceConfig.class, JpaConfig.class})
@@ -16,25 +18,29 @@ class PromotionRepositoryTest {
 
   @Autowired
   PromotionJpaRepository promotionJpaRepository;
-  
+
   @BeforeEach
-  @Transactional
   void setUp() {
     Promotion promotion = new Promotion();
-    promotion.setCreatedUserId("test");
-    promotion.setModifiedUserId("test");
+    promotion.setCreatedUserId("createUser");
+    promotion.setModifiedUserId("createUser");
     promotionJpaRepository.save(promotion);
   }
-  
-  @Test
-  @Transactional
-  void update() {
 
+  @Test
+  void update() throws Exception {
+
+    // given
+    String modifiedUserId = "bright-flare";
     Promotion promotion = promotionJpaRepository.findById(1L).orElseThrow();
-    promotion.delete("shs");
     
-    System.out.println(promotion);
+    // when
+    promotion.delete(modifiedUserId);
     
+    // then
+    assertEquals(Status.DELETED, promotion.getStatus());
+    assertEquals(modifiedUserId, promotion.getModifiedUserId());
+
   }
   
 }

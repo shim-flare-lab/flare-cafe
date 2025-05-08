@@ -1,0 +1,34 @@
+application:
+  slogan: test application !
+
+spring:
+  application:
+    name: test-app
+  web:
+    resources:
+      add-mappings: false
+  messages:
+    encoding: utf-8
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;
+      username: sa
+      password: password
+      pool-name: test-connection-pool
+
+logging:
+  level:
+    root: info
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace

@@ -4,8 +4,9 @@ import com.flarecafe.config.DataSourceConfig;
 import com.flarecafe.config.JpaConfig;
 import com.flarecafe.feature.generic.Money;
 import com.flarecafe.feature.generic.Status;
+import com.flarecafe.feature.generic.TimeInterval;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
-import com.flarecafe.feature.promotion.domain.support.PromotionType;
+import com.flarecafe.feature.promotion.domain.support.DiscountType;
 import com.flarecafe.feature.promotion.infra.PromotionJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class PromotionRepositoryTest {
 
   void save() {
     Promotion p = new Promotion();
-    p.update("promotion", "description", 0, PromotionType.AMOUNT, Money.ZERO, 10);
+    p.update("promotion", "description", 0, DiscountType.AMOUNT, Money.ZERO, 10, TimeInterval.UN_LIMITED);
     p.setCreatedUserId("createUser");
     p.setModifiedUserId("createUser");
     promotionJpaRepository.save(p);

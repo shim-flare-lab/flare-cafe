@@ -6,11 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Getter
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TimeInterval {
+  
+  private static final LocalDateTime FAR_PAST = LocalDateTime.of(1970, 1, 1, 0, 0);
+  private static final LocalDateTime FAR_FUTURE = LocalDateTime.of(9999, 12, 31, 23, 59, 59);
+  public static final TimeInterval UN_LIMITED = TimeInterval.of(FAR_PAST, FAR_FUTURE); 
   
   private LocalDateTime startAt;
   
@@ -37,4 +42,15 @@ public class TimeInterval {
     return this.endAt.isEqual(dateTime) || this.endAt.isAfter(dateTime); 
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof TimeInterval that)) return false;
+    return Objects.equals(startAt, that.startAt) && Objects.equals(endAt, that.endAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(startAt, endAt);
+  }
+  
 }

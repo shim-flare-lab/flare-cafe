@@ -2,7 +2,6 @@ package com.flarecafe.feature.promotion.domain.model;
 
 import com.flarecafe.feature.generic.BaseEntity;
 import com.flarecafe.feature.generic.Status;
-import com.flarecafe.feature.generic.TimeInterval;
 import com.flarecafe.feature.promotion.domain.support.ConditionType;
 import com.flarecafe.feature.promotion.domain.support.PromotionCategories;
 import com.flarecafe.feature.promotion.domain.support.PromotionMenus;
@@ -34,9 +33,6 @@ public class PromotionCondition extends BaseEntity {
   private ConditionType conditionType;
 
   @Embedded
-  private TimeInterval timeInterval;
-  
-  @Embedded
   private PromotionMenus promotionMenus;
 
   @Embedded
@@ -57,7 +53,7 @@ public class PromotionCondition extends BaseEntity {
   }
   
   public boolean isInRange(LocalDateTime localDateTime) {
-    return timeInterval.isInRange(localDateTime);
+    return promotion.isInRange(localDateTime);
   }
   
 }

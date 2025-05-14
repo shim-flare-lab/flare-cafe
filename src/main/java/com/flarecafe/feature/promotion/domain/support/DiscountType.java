@@ -1,6 +1,6 @@
 package com.flarecafe.feature.promotion.domain.support;
 
-public enum PromotionType {
+public enum DiscountType {
   AMOUNT,
   PERCENTAGE
 }

@@ -3,6 +3,7 @@ package com.flarecafe.feature.promotion.domain.model;
 import com.flarecafe.feature.generic.BaseEntity;
 import com.flarecafe.feature.generic.Money;
 import com.flarecafe.feature.generic.Status;
+import com.flarecafe.feature.promotion.domain.support.PromotionType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

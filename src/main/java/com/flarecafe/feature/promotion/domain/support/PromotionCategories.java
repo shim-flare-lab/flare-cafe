@@ -1,5 +1,6 @@
-package com.flarecafe.feature.promotion.domain.model;
+package com.flarecafe.feature.promotion.domain.support;
 
+import com.flarecafe.feature.promotion.domain.model.PromotionCategory;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;

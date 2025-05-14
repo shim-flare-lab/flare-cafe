@@ -1,7 +1,7 @@
 package com.flarecafe.feature.promotion.domain.evaluator;
 
 import com.flarecafe.feature.promotion.domain.PromotionConditionEvaluator;
-import com.flarecafe.feature.promotion.domain.model.ConditionType;
+import com.flarecafe.feature.promotion.domain.support.ConditionType;
 import com.flarecafe.feature.promotion.domain.model.PromotionCondition;
 
 public class CategoryEvaluator implements PromotionConditionEvaluator {

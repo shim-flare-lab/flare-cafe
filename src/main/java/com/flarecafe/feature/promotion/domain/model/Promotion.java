@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -41,7 +42,7 @@ public class Promotion extends BaseEntity {
   
   @Embedded
   private TimeInterval promotionPeriod;
-  
+
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "promotion", orphanRemoval = true)
   private List<PromotionCondition> promotionConditions;
   

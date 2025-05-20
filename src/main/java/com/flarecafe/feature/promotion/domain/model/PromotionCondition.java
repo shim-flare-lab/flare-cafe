@@ -1,6 +1,7 @@
 package com.flarecafe.feature.promotion.domain.model;
 
 import com.flarecafe.feature.generic.BaseEntity;
+import com.flarecafe.feature.promotion.domain.evaluator.EvaluationContext;
 import com.flarecafe.feature.promotion.domain.support.ConditionType;
 import com.flarecafe.feature.promotion.domain.support.PromotionCategories;
 import com.flarecafe.feature.promotion.domain.support.PromotionMenus;
@@ -49,6 +50,10 @@ public class PromotionCondition extends BaseEntity {
   
   public boolean isInRange(LocalDateTime localDateTime) {
     return promotion.isInRange(localDateTime);
+  }
+  
+  public boolean evaluate(String category, String menu) {
+    return conditionType.evaluate(this, EvaluationContext.of(category, menu));
   }
   
 }

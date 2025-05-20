@@ -23,4 +23,9 @@ public class PromotionMenu extends BaseEntity {
   // todo : menu 연관관계 설정 필요
   private String menu;
 
+  public PromotionMenu(PromotionCondition promotionCondition, String menu) {
+    this.promotionCondition = promotionCondition;
+    this.menu = menu;
+  }
+  
 }

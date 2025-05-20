@@ -6,11 +6,13 @@ import com.flarecafe.feature.promotion.domain.support.ConditionType;
 import com.flarecafe.feature.promotion.domain.support.PromotionCategories;
 import com.flarecafe.feature.promotion.domain.support.PromotionMenus;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Getter
 @Entity
@@ -36,8 +38,15 @@ public class PromotionCondition extends BaseEntity {
   private PromotionMenus promotionMenus;
 
   @Embedded
-  private PromotionCategories promotionCategories;
-  
+  private final PromotionCategories promotionCategories = new PromotionCategories();
+
+  @Builder
+  public PromotionCondition(Promotion promotion, ConditionType conditionType, PromotionMenus promotionMenus) {
+    this.promotion = promotion;
+    this.conditionType = conditionType;
+    this.promotionMenus = promotionMenus;
+  }
+
   // todo menu domain 으로 변경 필요
   public boolean includesMenu(String menu) {
     return promotionMenus.includes(menu);
@@ -54,6 +63,22 @@ public class PromotionCondition extends BaseEntity {
   
   public boolean evaluate(String category, String menu) {
     return conditionType.evaluate(this, EvaluationContext.of(category, menu));
+  }
+
+  public void updatePromotion(Promotion promotion) {
+    this.promotion = promotion;
+  }
+
+  public static PromotionCondition fixture() {
+
+    PromotionCondition promotionCondition = PromotionCondition.builder()
+            .conditionType(ConditionType.CATEGORY)
+            .build();
+
+    PromotionCategory latte = new PromotionCategory(promotionCondition, "latte");
+    promotionCondition.promotionCategories.add(latte);
+
+    return promotionCondition; 
   }
   
 }

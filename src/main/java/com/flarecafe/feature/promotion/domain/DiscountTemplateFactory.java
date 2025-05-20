@@ -3,6 +3,7 @@ package com.flarecafe.feature.promotion.domain;
 import com.flarecafe.feature.promotion.domain.discount.DiscountTemplate;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
 import com.flarecafe.feature.promotion.domain.support.DiscountType;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * Factory class to create DiscountTemplate instances based on the discount type of a promotion.
  */
-@Service
+@Component
 public class DiscountTemplateFactory {
 
   private final Map<DiscountType, DiscountPolicy> policyMap;

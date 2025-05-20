@@ -23,11 +23,15 @@ public class PromotionCategories {
     this.promotionCategories = promotionCategories;
   }
   
+  public void add(PromotionCategory promotionCategory) {
+    promotionCategories.add(promotionCategory);
+  }
+  
   // todo menu domain으로 변경 필요
   public boolean includes(String category) {
     return promotionCategories.stream()
       .filter(PromotionCategory::isNotDeleted)
-      .anyMatch(promotionCategory -> promotionCategory.equals(category));
+      .anyMatch(promotionCategory -> promotionCategory.getCategory().equals(category));
   }
   
 }

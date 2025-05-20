@@ -25,5 +25,10 @@ public class PromotionCategory extends BaseEntity {
   // todo : category Enum으로 변경
 //  @Enumerated(EnumType.STRING)
   private String category;
+
+  public PromotionCategory(PromotionCondition promotionCondition, String category) {
+    this.promotionCondition = promotionCondition;
+    this.category = category;
+  }
   
 }

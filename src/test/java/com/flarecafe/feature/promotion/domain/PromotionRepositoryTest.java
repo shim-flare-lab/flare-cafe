@@ -28,9 +28,7 @@ class PromotionRepositoryTest {
   }
 
   void save() {
-    Promotion p = new Promotion("bright-flare");
-    p.update("promotion", "description", DiscountType.AMOUNT, Money.ZERO, 10, TimeInterval.UN_LIMITED,"bright-flare");
-    promotionJpaRepository.save(p);
+    promotionJpaRepository.save(Promotion.fixture());
   }
 
   @Test

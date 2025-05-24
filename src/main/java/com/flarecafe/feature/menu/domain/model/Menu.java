@@ -1,6 +1,7 @@
 package com.flarecafe.feature.menu.domain.model;
 
 import com.flarecafe.feature.generic.Money;
+import com.flarecafe.feature.menu.domain.model.support.Category;
 import com.flarecafe.feature.menu.domain.model.support.MenuStatus;
 import com.flarecafe.feature.optiongroup.domain.model.Option;
 import jakarta.persistence.*;
@@ -18,8 +19,7 @@ public class Menu {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "category_id")
+  @Enumerated(EnumType.STRING)
   private Category category;
 
   private String name;

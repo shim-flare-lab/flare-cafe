@@ -8,6 +8,10 @@ public class RecipeDetail {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "recipe_id")
+  private Recipe recipe;
+
   private Integer sortOrder;
 
   @ManyToOne(fetch = FetchType.LAZY)

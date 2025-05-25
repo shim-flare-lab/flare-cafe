@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import java.util.NoSuchElementException;
+
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
@@ -23,6 +25,12 @@ public class GlobalExceptionAdvice {
   @ExceptionHandler(NoHandlerFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   protected ErrorResponse handlerNotFoundException(NoHandlerFoundException e) {
+    return ErrorResponse.of(ErrorCodes.Default.NOT_FOUND);
+  }
+
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  protected ErrorResponse handlerNoSuchElementException(NoSuchElementException e) {
     return ErrorResponse.of(ErrorCodes.Default.NOT_FOUND);
   }
 

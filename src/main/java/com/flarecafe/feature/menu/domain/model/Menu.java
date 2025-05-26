@@ -5,6 +5,7 @@ import com.flarecafe.feature.menu.domain.model.support.Category;
 import com.flarecafe.feature.menu.domain.model.support.MenuStatus;
 import com.flarecafe.feature.optiongroup.domain.model.Option;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,7 +13,9 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@Getter
 @Entity
 public class Menu {
   @Id
@@ -61,4 +64,28 @@ public class Menu {
 
     return this.price.getAmount().add(totalOptionPrice);
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Menu menu)) return false;
+    return Objects.equals(id, menu.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
+  }
+  
+  public static Menu fixture() {
+    Menu menu = new Menu();
+    menu.category = Category.COFFEE;
+    menu.name = "커피";
+    menu.price = Money.of(10000);
+    menu.ingredients = "커피, 우유, 초콜릿";
+    menu.imageUrl = "https://cdn.pixabay.com/photo/2017/08/12/18/58/coffee-2635031_1280.jpg";
+    menu.status = MenuStatus.SELLABLE;
+    menu.createdDate = LocalDateTime.now();
+    return menu;
+  }
+  
 }

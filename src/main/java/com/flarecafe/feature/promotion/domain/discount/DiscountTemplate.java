@@ -1,6 +1,7 @@
 package com.flarecafe.feature.promotion.domain.discount;
 
 import com.flarecafe.feature.generic.Money;
+import com.flarecafe.feature.menu.domain.model.Menu;
 import com.flarecafe.feature.promotion.domain.DiscountPolicy;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
 import com.flarecafe.feature.promotion.domain.model.PromotionCondition;
@@ -13,13 +14,14 @@ public class DiscountTemplate {
     this.discountPolicy = discountPolicy;
   }
   
-  public Money discount(Promotion promotion, String menu) {
+  // todo : Menu를 Order로 변경 필요. Order에서 메뉴 + 추가금 합산 금액을 제공할 것.
+  public Money discount(Promotion promotion, Menu menu) {
 
-    // todo : menu로부터 가져올 것.
+//    Money money = menu.calculateTotalPrice(); // todo : Order에서 메뉴 + 추가금 합산 금액을 제공할 것.
     Money money = Money.ZERO;
     
     for (PromotionCondition promotionCondition : promotion.getPromotionConditions()) {
-      if (promotionCondition.evaluate("category", menu)) { // todo : menu로부터 카테고리 가져올 것
+      if (promotionCondition.evaluate(menu)) {
         return discountPolicy.discount(promotion, money);
       }
     }

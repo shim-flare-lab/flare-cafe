@@ -2,10 +2,7 @@ package com.flarecafe.feature.promotion.domain;
 
 import com.flarecafe.config.DataSourceConfig;
 import com.flarecafe.config.JpaConfig;
-import com.flarecafe.feature.generic.Money;
-import com.flarecafe.feature.generic.TimeInterval;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
-import com.flarecafe.feature.promotion.domain.support.DiscountType;
 import com.flarecafe.feature.promotion.infra.PromotionJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

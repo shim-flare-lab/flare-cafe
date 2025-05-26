@@ -1,7 +1,6 @@
 package com.flarecafe.feature.promotion.domain.support;
 
 import com.flarecafe.feature.promotion.domain.evaluator.EvaluationContext;
-import com.flarecafe.feature.promotion.domain.model.Promotion;
 import com.flarecafe.feature.promotion.domain.model.PromotionCondition;
 
 import java.time.LocalDateTime;
@@ -26,7 +25,7 @@ public enum ConditionType {
   ConditionType(BiFunction<PromotionCondition, EvaluationContext, Boolean> conditionEvaluator) {
     this.conditionEvaluator = conditionEvaluator;
   }
-
+  
   public boolean evaluate(PromotionCondition promotionCondition, EvaluationContext context) {
     return this.conditionEvaluator.apply(promotionCondition, context);
   }

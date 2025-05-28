@@ -12,7 +12,7 @@ class GlobalExceptionAdviceTest {
     
     ObjectMapper objectMapper = new ObjectMapper();
     BusinessException menuBusinessException = new BusinessException(ErrorCodes.Business.Menu.INVALID_MENU_NAME);
-    BusinessException promotionBusinessException = new BusinessException(ErrorCodes.Business.Promotion.INVALID_PROMOTION);
+    BusinessException promotionBusinessException = new BusinessException(ErrorCodes.Business.Promotion.DISCOUNT_PERCENTAGE_NEGATIVE);
     
     System.out.println(objectMapper.writeValueAsString(ErrorResponse.of(menuBusinessException.getErrorCode())));
     System.out.println(objectMapper.writeValueAsString(ErrorResponse.of(ErrorCodes.Business.Menu.INVALID_INPUT_VALUE)));

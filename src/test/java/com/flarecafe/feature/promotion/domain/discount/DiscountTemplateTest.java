@@ -5,6 +5,7 @@ import com.flarecafe.feature.generic.TimeInterval;
 import com.flarecafe.feature.menu.domain.model.Menu;
 import com.flarecafe.feature.promotion.domain.DiscountTemplateFactory;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
+import com.flarecafe.feature.promotion.domain.model.PromotionStatus;
 import com.flarecafe.feature.promotion.domain.support.DiscountType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -52,7 +53,7 @@ class DiscountTemplateTest {
     // given
     Menu menu = Menu.fixture();
     Promotion promotion = new Promotion();
-    promotion.update("test", "test", DiscountType.PERCENTAGE, Money.of(10000), 15, TimeInterval.UN_LIMITED, "bright-flare");
+    promotion.update("test", "test", DiscountType.PERCENTAGE, Money.of(10000), 15, TimeInterval.UN_LIMITED,  PromotionStatus.TEMP_SAVE, "bright-flare");
     
     // when
     DiscountTemplate discountTemplate = discountTemplateFactory.create(promotion);

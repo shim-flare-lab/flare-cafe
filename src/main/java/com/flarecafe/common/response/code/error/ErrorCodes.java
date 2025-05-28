@@ -57,7 +57,11 @@ public final class ErrorCodes {
     @AllArgsConstructor
     public enum Promotion implements BusinessErrorCode {
 
-      INVALID_PROMOTION("0001", "Invalid promotion name"),
+      DISCOUNT_PERCENTAGE_REQUIRED("0001", "percentage is required when the DiscountType is PERCENTAGE."),
+      DISCOUNT_PERCENTAGE_NEGATIVE("0002", "percentage value must not be negative."),
+      DISCOUNT_AMOUNT_REQUIRED("0003", "amount is required when the DiscountType is AMOUNT."),
+      DISCOUNT_AMOUNT_NEGATIVE("0004", "amount value must not be negative."),
+      
       ;
 
       private static final String NAME = "PROMOTION";

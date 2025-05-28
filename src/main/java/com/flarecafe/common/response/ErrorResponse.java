@@ -1,6 +1,6 @@
 package com.flarecafe.common.response;
 
-import com.flarecafe.common.response.code.ErrorCode;
+import com.flarecafe.common.response.code.FlareCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,23 +18,23 @@ public class ErrorResponse {
   private String message;
   private List<FieldErrorDetail> errorDetails;
 
-  private ErrorResponse(final ErrorCode code) {
+  private ErrorResponse(final FlareCode code) {
     this.message = code.getMessage();
     this.code = code.getCode();
     this.errorDetails = new ArrayList<>();
   }
 
-  private ErrorResponse(final ErrorCode code, final List<FieldErrorDetail> errors) {
+  private ErrorResponse(final FlareCode code, final List<FieldErrorDetail> errors) {
     this.message = code.getMessage();
     this.code = code.getCode();
     this.errorDetails = errors;
   }
 
-  public static ErrorResponse of(final ErrorCode code) {
+  public static ErrorResponse of(final FlareCode code) {
     return new ErrorResponse(code);
   }
 
-  public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
+  public static ErrorResponse of(final FlareCode code, final BindingResult bindingResult) {
     return new ErrorResponse(code, FieldErrorDetail.from(bindingResult));
   }
 

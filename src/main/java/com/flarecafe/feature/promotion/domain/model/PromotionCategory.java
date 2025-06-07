@@ -1,6 +1,7 @@
 package com.flarecafe.feature.promotion.domain.model;
 
 import com.flarecafe.feature.generic.BaseEntity;
+import com.flarecafe.feature.menu.domain.model.support.Category;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -22,11 +23,10 @@ public class PromotionCategory extends BaseEntity {
   @JoinColumn(name = "promotion_condition_id")
   private PromotionCondition promotionCondition;
 
-  // todo : category Enum으로 변경
-//  @Enumerated(EnumType.STRING)
-  private String category;
+  @Enumerated(EnumType.STRING)
+  private Category category;
 
-  public PromotionCategory(PromotionCondition promotionCondition, String category) {
+  public PromotionCategory(PromotionCondition promotionCondition, Category category) {
     this.promotionCondition = promotionCondition;
     this.category = category;
   }

@@ -1,9 +1,12 @@
 package com.flarecafe.feature.promotion.domain.evaluator;
 
-public record EvaluationContext(String category, String menu) {
+import com.flarecafe.feature.menu.domain.model.Menu;
+import com.flarecafe.feature.menu.domain.model.support.Category;
 
-  public static EvaluationContext of(String category, String menu) {
-    return new EvaluationContext(category, menu);
+public record EvaluationContext(Category category, Menu menu) {
+
+  public static EvaluationContext of(Menu menu) {
+    return new EvaluationContext(menu.getCategory(), menu);
   }
 
 }

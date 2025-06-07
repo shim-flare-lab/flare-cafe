@@ -2,6 +2,7 @@ package com.flarecafe.feature.promotion.domain.discount;
 
 import com.flarecafe.feature.generic.Money;
 import com.flarecafe.feature.generic.TimeInterval;
+import com.flarecafe.feature.menu.domain.model.Menu;
 import com.flarecafe.feature.promotion.domain.DiscountTemplateFactory;
 import com.flarecafe.feature.promotion.domain.model.Promotion;
 import com.flarecafe.feature.promotion.domain.support.DiscountType;
@@ -27,35 +28,35 @@ class DiscountTemplateTest {
     discountTemplateFactory = new DiscountTemplateFactory(List.of(amountDiscountPolicy, percentageDiscountPolicy));
   }
 
-  // todo : menu를 Menu로 바꾸어야 한다.
   @Test
   @Disabled
   void fixedAmountDiscount() {
 
     // given
+    Menu menu = Menu.fixture();
     Promotion promotion = Promotion.fixture();
     
     // when
     DiscountTemplate discountTemplate = discountTemplateFactory.create(promotion);
-    Money money = discountTemplate.discount(promotion, "menu");
+    Money money = discountTemplate.discount(promotion, menu);
 
     // then
-    assertEquals(money, Money.ZERO);
+    assertEquals(Money.ZERO, money);
     
   }
   
-  // todo : menu를 Menu로 바꾸어야 한다.
   @Test
   @Disabled
   void percentageDiscount() {
 
     // given
+    Menu menu = Menu.fixture();
     Promotion promotion = new Promotion();
     promotion.update("test", "test", DiscountType.PERCENTAGE, Money.of(10000), 15, TimeInterval.UN_LIMITED, "bright-flare");
     
     // when
     DiscountTemplate discountTemplate = discountTemplateFactory.create(promotion);
-    Money money = discountTemplate.discount(promotion, "menu");
+    Money money = discountTemplate.discount(promotion, menu);
 
     // then
     assertEquals(money, Money.of(17000));

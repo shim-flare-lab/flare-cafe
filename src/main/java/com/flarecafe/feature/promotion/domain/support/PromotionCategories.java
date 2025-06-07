@@ -1,5 +1,6 @@
 package com.flarecafe.feature.promotion.domain.support;
 
+import com.flarecafe.feature.menu.domain.model.support.Category;
 import com.flarecafe.feature.promotion.domain.model.PromotionCategory;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
@@ -27,11 +28,10 @@ public class PromotionCategories {
     promotionCategories.add(promotionCategory);
   }
   
-  // todo menu domain으로 변경 필요
-  public boolean includes(String category) {
+  public boolean includes(Category category) {
     return promotionCategories.stream()
       .filter(PromotionCategory::isNotDeleted)
-      .anyMatch(promotionCategory -> promotionCategory.getCategory().equals(category));
+      .anyMatch(promotionCategory -> promotionCategory.getCategory() == category);
   }
   
 }

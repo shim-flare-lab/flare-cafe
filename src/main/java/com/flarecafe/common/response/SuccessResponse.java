@@ -1,6 +1,6 @@
 package com.flarecafe.common.response;
 
-import com.flarecafe.common.response.code.SuccessCode;
+import com.flarecafe.common.response.code.success.SuccessCode;
 import lombok.Getter;
 
 @Getter

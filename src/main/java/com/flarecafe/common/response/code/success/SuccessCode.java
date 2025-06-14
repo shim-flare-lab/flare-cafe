@@ -1,9 +1,11 @@
-package com.flarecafe.common.response.code;
+package com.flarecafe.common.response.code.success;
 
+import com.flarecafe.common.response.code.FlareCode;
 import lombok.Getter;
 
 @Getter
-public enum SuccessCode {
+public enum SuccessCode implements FlareCode {
+  
   OK("0001", "Request Successful"),
   ;
 
@@ -15,4 +17,5 @@ public enum SuccessCode {
     this.message = String.format(PREFIX, message);
     this.code = code;
   }
+  
 }

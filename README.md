@@ -10,7 +10,7 @@
 
 <br>
 
-### Sdkman install
+### 1. Sdkman install
 
 ```bash
 curl -s "https://get.sdkman.io" | bash
@@ -22,7 +22,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 <br>
 
-### Java 21 install
+### 2. Java 21 install
 ```bash
 sdk install java 21.0.5-tem
 ```
@@ -35,32 +35,22 @@ sdk home java 21.0.5-tem
 
 <br>
 
-### Docker mysql container run
+### 3. CLI Run
 
 ```bash
-docker run -d -p 3306:3306 --name flare-cafe -e MYSQL_ROOT_PASSWORD=1234 mysql:9.0
+./gradlew clean build
 ```
+
 ```bash
-docker ps
+docker compose --profile local up -d
 ```
+
 ```bash
-docker exec -it flare-cafe bash
+java -jar ./build/libs/flare-cafe.jar --spring.profiles.active=local --spring.docker.compose.profiles.active=local
 ```
 
 <br>
 
-### Mysql bash
+### 4. IDE Run
 
-```sql
-mysql -u root -p
-
-create database `flare-cafe`;
-
-use `flare-cafe`;
-
-create user 'flare-cafe-user' identified by '1234';
-
-create user 'flare-cafe-user'@'localhost' identified by '1234';
-
-grant all privileges on `flare-cafe`.* to 'flare-cafe-user'@'%' with grant option;
-```
+![ide-configuration.png](src/main/resources/static/ide-configuration.png)

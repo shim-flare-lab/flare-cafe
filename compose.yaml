@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: 'mysql:9.0'
+    environment:
+      - 'MYSQL_DATABASE=flare-cafe'
+      - 'MYSQL_PASSWORD=1234'
+      - 'MYSQL_ROOT_PASSWORD=1234'
+      - 'MYSQL_USER=flare-cafe-user'
+    ports:
+      - '3306:3306'
+    profiles:
+      - local

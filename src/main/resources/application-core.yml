@@ -11,3 +11,8 @@ spring:
     encoding: utf-8
   jpa:
     open-in-view: false
+  
+  docker:
+    compose:
+      profiles:
+        active: local

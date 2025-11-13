@@ -3,7 +3,7 @@ package com.flarecafe.feature.menu.domain.model;
 import com.flarecafe.feature.generic.Money;
 import com.flarecafe.feature.menu.domain.model.support.Category;
 import com.flarecafe.feature.menu.domain.model.support.MenuStatus;
-import com.flarecafe.feature.optiongroup.domain.model.Option;
+import com.flarecafe.feature.optiongroup.domain.model.OptionItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -57,9 +57,9 @@ public class Menu {
     return true; // promotion도메인이 머지되면 추가
   }
 
-  public BigDecimal calculateTotalPrice(List<Option> options) {
-    BigDecimal totalOptionPrice = options.stream()
-      .map(Option::getPrice)
+  public BigDecimal calculateTotalPrice(List<OptionItem> optionItems) {
+    BigDecimal totalOptionPrice = optionItems.stream()
+      .map(OptionItem::getPrice)
       .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     return this.price.getAmount().add(totalOptionPrice);

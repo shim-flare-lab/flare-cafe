@@ -3,6 +3,7 @@ package com.flarecafe.common.response;
 import com.flarecafe.common.response.code.success.SuccessCode;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,7 +23,22 @@ public class SuccessListResponse<T> {
     this.totalCount = list.size();
   }
 
+  public SuccessListResponse(SuccessCode successCode) {
+    this.code = successCode.getCode();
+    this.message = successCode.getMessage();
+    this.list = new ArrayList<>();
+    this.totalCount = 0;
+  }
+
   public static <T> SuccessListResponse<T> of(SuccessCode successCode, List<T> list) {
     return new SuccessListResponse<>(successCode, list);
+  }
+
+  public static <T> SuccessListResponse<T> emptyList() {
+    return new SuccessListResponse<>(SuccessCode.OK);
+  }
+
+  public static <T> SuccessListResponse<T> ok(List<T> list) {
+    return new SuccessListResponse<>(SuccessCode.OK, list);
   }
 }

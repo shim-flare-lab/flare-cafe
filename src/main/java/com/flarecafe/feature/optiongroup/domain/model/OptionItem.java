@@ -6,7 +6,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Option {
+@Table(name = "option_item")
+public class OptionItem {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -16,7 +17,7 @@ public class Option {
   @Embedded
   private Money price;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "option_group_id")
   private OptionGroup optionGroup;
 

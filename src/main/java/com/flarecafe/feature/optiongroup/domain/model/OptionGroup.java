@@ -15,7 +15,6 @@ public class OptionGroup {
 
   private OptionGroupType type;
 
-  @OneToMany(fetch = FetchType.LAZY)
-  @JoinColumn(name = "option_id")
-  private List<Option> options;
+  @OneToMany(mappedBy = "optionGroup", fetch = FetchType.LAZY)
+  private List<OptionItem> optionItems;
 }

@@ -71,6 +71,24 @@ public final class ErrorCodes {
       }
       
     }
+
+    @AllArgsConstructor
+    public enum Ingredient implements BusinessErrorCode {
+
+      INVALID_INGREDIENT_NAME("0001", "Invalid ingredient name"),
+      ;
+
+      private static final String INGREDIENT = "INGREDIENT";
+      private final String code;
+
+      @Getter
+      private final String message;
+
+      public String getCode() {
+        return formatting(INGREDIENT, code);
+      }
+
+    }
   }
   
   

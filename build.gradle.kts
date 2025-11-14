@@ -49,3 +49,9 @@ dependencies {
 tasks.withType<Test> {
   useJUnitPlatform()
 }
+
+tasks.test {
+  val mockitoJar = configurations.testRuntimeClasspath.get()
+    .first { it.name.contains("mockito-core") }
+  jvmArgs("-javaagent:${mockitoJar.absolutePath}")
+}

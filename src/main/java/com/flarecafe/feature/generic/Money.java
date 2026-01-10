@@ -27,6 +27,10 @@ public class Money {
   public static Money of(double amount) {
     return new Money(BigDecimal.valueOf(amount));
   }
+  
+  public static Money of(BigDecimal amount) {
+    return new Money(amount);
+  }
 
   public Money plus(Money amount) {
     return new Money(this.amount.add(amount.amount));
